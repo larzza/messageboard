@@ -18,6 +18,18 @@ An implementation of a small message board service.
   - [Build and deploy with local JDK](#build-and-deploy-with-local-jdk)
   - [Convenience scripts to test the api](#convenience-scripts-to-test-the-api)
 
+## Description
+
+A RESTful API to serve as the backend for a public message board. 
+
+Features:
+- A client can create a message in the service
+- A client can modify their own messages
+- A client can delete their own messages
+- A client can view all messages in the service
+
+For now an in-memory solution for storing data is used.
+
 ## API
 
 ### Create a message
