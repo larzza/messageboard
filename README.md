@@ -1,8 +1,25 @@
+
+
 # A "message board" service built with Spring Boot
 
 An implementation of a small message board service.
 
-At the time of writing this is just a toy project used to try out Spring Boot.  
+> At the time of writing this is just a toy project used to try out Spring Boot.  
+
+- [A &quot;message board&quot; service built with Spring Boot](#a-quotmessage-boardquot-service-built-with-spring-boot)
+  - [API](#api)
+    - [Create a message](#create-a-message)
+    - [Fetch all messages](#fetch-all-messages)
+    - [Fetch one message](#fetch-one-message)
+    - [Modify a message](#modify-a-message)
+    - [Delete a message](#delete-a-message)
+  - [Backlog](#backlog)
+  - [Build and deploy with Docker](#build-and-deploy-with-docker)
+    - [Alternative 1](#alternative-1)
+    - [Alternative 2](#alternative-2)
+  - [Build and deploy with local JDK](#build-and-deploy-with-local-jdk)
+  - [Test the api](#test-the-api)
+
 
 ## API
 
@@ -75,7 +92,7 @@ This is work in progress and a lot of things can be improved, but keep in mind t
 - Use swagger to define and document the [api](https://swagger.io).
 - I'm sure there are more things... :-)
 
-## With Docker
+## Build and deploy with Docker
 
 ### Alternative 1
 
@@ -90,7 +107,7 @@ Tools needed:
 
 In this scenario we use Docker to:
 
-- build an executable jar that ends up on your local drive in directory ´<project>/build/libs´
+- build an executable jar that ends up on your local drive in directory ´&lt;project&gt;/build/libs´
 - fire up the built executable jar (with the servlet container) in a docker container to make the message board endpoints available. 
  
 ```bash
@@ -104,7 +121,9 @@ $ docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/proje
 $ docker run --rm -d -v "$PWD":/project -w /project -p 8080:8080 adoptopenjdk/openjdk11:alpine-slim java -jar build/libs/msgboardpoc-0.0.1-SNAPSHOT.jar
 ```
 
-### Alternative 2 - Docker with Buildkit
+### Alternative 2
+
+> Custom image with Docker and Buildkit
 
 Tools needed:
 
@@ -123,7 +142,7 @@ $ docker image ls
 $ docker container ls
 ```
 
-## Without Docker
+## Build and deploy with local JDK
 
 Tools needed:
 - java 11
