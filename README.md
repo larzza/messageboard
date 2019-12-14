@@ -1,5 +1,3 @@
-
-
 # A "message board" service built with Spring Boot
 
 An implementation of a small message board service.
@@ -18,8 +16,7 @@ An implementation of a small message board service.
     - [Alternative 1](#alternative-1)
     - [Alternative 2](#alternative-2)
   - [Build and deploy with local JDK](#build-and-deploy-with-local-jdk)
-  - [Test the api](#test-the-api)
-
+  - [Convenience scripts to test the api](#convenience-scripts-to-test-the-api)
 
 ## API
 
@@ -107,7 +104,7 @@ Tools needed:
 
 In this scenario we use Docker to:
 
-- build an executable jar that ends up on your local drive in directory ´&lt;project&gt;/build/libs´
+- build an executable jar that ends up on your local drive in directory `<project>/build/libs`
 - fire up the built executable jar (with the servlet container) in a docker container to make the message board endpoints available. 
  
 ```bash
@@ -157,7 +154,7 @@ $ ./gradlew build
 $ java -jar build/libs/msgboardpoc-0.0.1-SNAPSHOT.jar
 ```
 
-## Test the api
+## Convenience scripts to test the api
 
 Test the API with [Postman](https://www.getpostman.com) or [Curl](https://curl.haxx.se) 
 or with the provided convenience scripts (which use curl and [jq](https://stedolan.github.io/jq/)).
@@ -168,24 +165,24 @@ $ cd <project>/scripts
 # Fill with data
 $ ./createMessages
 
-# get all messages
+# Get all messages
 $ ./getAll
 
-# create a message
+# Create a message
 $ ./create Simone Mandarinerna "A very good book."
 
-# get the created message
+# Get the created message
 $ ./get Simone Mandarinerna
 
-# modify the message
+# Modify the message
 $ ./modify Simone Mandarinerna "One of the best novels ever written."
 
-# inspect the modification
+# Inspect the modification
 $ ./get Simone Mandarinerna
 
-# delete the message
+# Delete the message
 $ ./delete Simone Mandarinerna
 
-# get the message and verify that a error message is returned
+# Get the message and verify that an error message is returned
 $ ./get Simone Mandarinerna
 ```
