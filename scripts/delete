@@ -1,0 +1,7 @@
+#! /bin/bash
+
+curl  --request DELETE \
+      --header "Content-Type: application/json" \
+      --data "{\"userId\":\"${1}\", \"messageId\":\"${2}\", \"message\":\"\" }" \
+      --url  http://localhost:8080/api/v1/message \
+      --silent | jq

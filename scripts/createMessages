@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Create user and messages
+
+# Karl-Ove Knausgård
+n=6
+for (( i = 0; i < n; i++ )); do
+curl  --request POST \
+      --header "Content-Type: application/json" \
+      --data "{\"userId\":\"Karl-Ove\", \"messageId\":\"book${i}\", \"message\":\"A long novel about Karl-Oves life ${i}.\" }" \
+      --url  http://localhost:8080/api/v1/message
+done
+
+# Doris Lessing
+n=5
+for (( i = 0; i < n; i++ )); do
+curl  --request POST \
+      --header "Content-Type: application/json" \
+      --data "{\"userId\":\"Doris\", \"messageId\":\"msg${i}\", \"message\":\"A long novel about Doris life ${i}.\" }" \
+      --url  http://localhost:8080/api/v1/message
+done
+
+# Olga Tokarczuk
+n=4
+for (( i = 0; i < n; i++ )); do
+curl  --request POST \
+      --header "Content-Type: application/json" \
+      --data "{\"userId\":\"Olga\", \"messageId\":\"msg${i}\", \"message\":\"A good book by Olga Tokarczuk ${i}.\" }" \
+      --url  http://localhost:8080/api/v1/message
+done
