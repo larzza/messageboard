@@ -5,6 +5,7 @@ An implementation of a small message board service.
 > At the time of writing this is just a toy project used to try out Spring Boot.  
 
 - [A &quot;message board&quot; service built with Spring Boot](#a-quotmessage-boardquot-service-built-with-spring-boot)
+  - [Description](#description)
   - [API](#api)
     - [Create a message](#create-a-message)
     - [Fetch all messages](#fetch-all-messages)
