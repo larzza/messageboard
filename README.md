@@ -169,10 +169,16 @@ Tools needed:
 
 ```bash
 $ git clone https://github.com/larzza/messageboard.git
+
 $ cd messageboard
+
 # Set JAVA_HOME if needed, here's an example path on a Mac.
 $ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.5.jdk/Contents/Home/"
+
 $ ./gradlew build
+
+$ ./gradlew test
+
 $ java -jar build/libs/msgboardpoc-0.0.1-SNAPSHOT.jar
 ```
 
