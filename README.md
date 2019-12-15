@@ -123,8 +123,8 @@ In this scenario we use Docker to:
 - fire up the built executable jar (with the servlet container) in a docker container to make the message board endpoints available. 
 
 ```bash
-$ git checkout ....
-$ cd <project-location>
+$ git clone https://github.com/larzza/messageboard.git
+$ cd messageboard
 
 # Build an executable standalone jar of the project 
 $ docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:jdk11 gradle build
@@ -141,11 +141,19 @@ Tools needed:
 - Curl and jq for testing.
 
 ```bash
+
+# Dockerfile is all that's needed - clone the git repo or just copy the Dockerfile
+$ git clone https://github.com/larzza/messageboard.git
+$ cd messageboard
+
 # Build custom image
 $ DOCKER_BUILDKIT=1 docker build -t messageboard .
 
 # Run container with messageboard service from the custom built image
 $ docker run -d --name mymessageboard -p 8080:8080 messageboard
+
+# Start another message board
+$ docker run -d --name mymessageboard2 -p 7080:8080 messageboard
 
 # List image and contaienr
 $ docker image ls
@@ -160,8 +168,8 @@ Tools needed:
 - [jq](https://stedolan.github.io/jq/)
 
 ```bash
-$ git checkout ....
-$ cd <project-location>
+$ git clone https://github.com/larzza/messageboard.git
+$ cd messageboard
 # Set JAVA_HOME if needed, here's an example path on a Mac.
 $ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.5.jdk/Contents/Home/"
 $ ./gradlew build
@@ -172,6 +180,8 @@ $ java -jar build/libs/msgboardpoc-0.0.1-SNAPSHOT.jar
 
 Test the API with [Postman](https://www.getpostman.com) or [Curl](https://curl.haxx.se) 
 or with the provided convenience scripts (which use curl and [jq](https://stedolan.github.io/jq/)).
+
+> Note: The scripts are hardcoded to use localhost:8080
 
 ```bash
 $ cd <project>/scripts
