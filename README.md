@@ -14,8 +14,8 @@ An implementation of a small message board service.
     - [Delete a message](#delete-a-message)
   - [Backlog](#backlog)
   - [Build and deploy with Docker](#build-and-deploy-with-docker)
-    - [Alternative 1](#alternative-1)
-    - [Alternative 2](#alternative-2)
+    - [Alternative 1 - Docker without a custom Docker image](#alternative-1---docker-without-a-custom-docker-image)
+    - [Alternative 2 - Custom image with Docker and Buildkit](#alternative-2---custom-image-with-docker-and-buildkit)
   - [Build and deploy with local JDK](#build-and-deploy-with-local-jdk)
   - [Convenience scripts to test the api](#convenience-scripts-to-test-the-api)
 
@@ -24,10 +24,11 @@ An implementation of a small message board service.
 A RESTful API to serve as the backend for a public message board. 
 
 Features:
-- A client can create a message in the service
-- A client can modify their own messages
-- A client can delete their own messages
-- A client can view all messages in the service
+
+- A client can create a message in the service.
+- A client can modify their own messages.
+- A client can delete their own messages.
+- A client can view all messages in the service.
 
 For now an in-memory solution for storing data is used.
 
@@ -35,16 +36,16 @@ For now an in-memory solution for storing data is used.
 
 ### Create a message
 
-- Http verb: POST
+- Http verb: `POST`
 - Endpoint: `<host>/api/v1/message`
 - Example:
-
     ```bash
     curl  --request POST \
       --header "Content-Type: application/json" \
       --data "{"userId":"Doris", "messageId":"Martha", "message":"A message about a book." }" \
       --url  http://localhost:8080/api/v1/message
     ```
+
 > Also see convenience scripts below.
 
 ### Fetch all messages
@@ -66,7 +67,6 @@ For now an in-memory solution for storing data is used.
 - Http verb: `PUT`
 - Endpoint: `<host>/api/v1/message`
 - Example:
-
     ```bash
     curl  --request PUT \
           --header "Content-Type: application/json" \
@@ -80,7 +80,6 @@ For now an in-memory solution for storing data is used.
 - Http verb: `DELETE`
 - Endpoint: `<host>/api/v1/message`
 - Example:
-
     ```bash
     curl  --request DELETE \
           --header "Content-Type: application/json" \
@@ -93,33 +92,36 @@ For now an in-memory solution for storing data is used.
 
 This is work in progress and a lot of things can be improved, but keep in mind that this is just a toy project.
 
+- Use swagger to define and document the [api](https://swagger.io).
 - Logging.
+- More tests.
+  - Integration tests
 - Authentication
+- Implement an in memory database
 - Implement a permanent storage service. 
 - More javadoc.
-- Extend the REST api.
+- Extend (and refactor) the REST api.
 - Implement available but not implemented endpoints.
-- Use swagger to define and document the [api](https://swagger.io).
-- I'm sure there are more things... :-)
+- Build a small web client.
+- Websockets to push messages to message boards.
+- I'm sure there're more things... :-)
 
 ## Build and deploy with Docker
 
-### Alternative 1
-
-> Docker without a custom Docker image
+### Alternative 1 - Docker without a custom Docker image
 
 Tools needed:
- 
-- Git 
+
+- Git
 - Docker
-- Curl 
-- Jq (used in the convenience scripts to prettify the response output) 
+- Curl
+- Jq (used in the convenience scripts to prettify the response output)
 
 In this scenario we use Docker to:
 
 - build an executable jar that ends up on your local drive in directory `<project>/build/libs`
 - fire up the built executable jar (with the servlet container) in a docker container to make the message board endpoints available. 
- 
+
 ```bash
 $ git checkout ....
 $ cd <project-location>
@@ -131,9 +133,7 @@ $ docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/proje
 $ docker run --rm -d -v "$PWD":/project -w /project -p 8080:8080 adoptopenjdk/openjdk11:alpine-slim java -jar build/libs/msgboardpoc-0.0.1-SNAPSHOT.jar
 ```
 
-### Alternative 2
-
-> Custom image with Docker and Buildkit
+### Alternative 2 - Custom image with Docker and Buildkit
 
 Tools needed:
 
@@ -155,13 +155,14 @@ $ docker container ls
 ## Build and deploy with local JDK
 
 Tools needed:
-- java 11
+- Java 11 (JDK)
 - [Curl](https://curl.haxx.se)
 - [jq](https://stedolan.github.io/jq/)
 
 ```bash
 $ git checkout ....
 $ cd <project-location>
+# Set JAVA_HOME if needed, here's an example path on a Mac.
 $ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.5.jdk/Contents/Home/"
 $ ./gradlew build
 $ java -jar build/libs/msgboardpoc-0.0.1-SNAPSHOT.jar
