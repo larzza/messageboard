@@ -16,4 +16,4 @@ RUN --mount=type=cache,target=/root/.gradle,id=gradle-cache,rw \
 FROM adoptopenjdk/openjdk11:alpine-slim AS executable
 COPY --from=builder /src/messageboard/build/libs/msgboardpoc-0.0.1-SNAPSHOT.jar /messageboard/
 WORKDIR /messageboard
-ENTRYPOINT [ "java", "-jar", "messageboard/msgboardpoc-0.0.1-SNAPSHOT.jar" ]
+ENTRYPOINT [ "java", "-jar", "msgboardpoc-0.0.1-SNAPSHOT.jar" ]
