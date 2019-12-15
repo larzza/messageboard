@@ -3,6 +3,9 @@ package se.axeto.msgboardpoc.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Base exception for the message service.
+ */
 @ResponseStatus(value= HttpStatus.INTERNAL_SERVER_ERROR, reason="The request couldn't be processed.")
 public class MessageServiceException extends Exception {
 

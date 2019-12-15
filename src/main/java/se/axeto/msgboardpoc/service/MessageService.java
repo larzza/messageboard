@@ -11,12 +11,11 @@ import java.util.Map;
 /**
  * An interface specifying the api of the message service.
  *
- * This is an naive approach which in reality just is
- * kind of a key/value-store, with an extra level of grouping,
- * where both the keys and the values are representated by strings.
+ * This is an naive approach that use strings to identify
+ * both a user and a message.
  *
  * <p>
- * A message (<code>Message</code>) is identified by a name
+ * A message (<code>Message</code>) is identified by a message id
  * (<code>String</code>) and are grouped per user (<code>String</code>).
  *</p>
  *

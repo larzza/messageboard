@@ -17,10 +17,12 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * A client can create a message in the service
- * A client can modify their own messages
- * A client can delete their own messages
- * A client can view all messages in the service
+ * Message controller that implements a RESTful API to serve as the backend for a public message board.
+ *
+ * - A client can create a message in the service
+ * - A client can modify their own messages
+ * - A client can delete their own messages
+ * - A client can view all messages in the service
  */
 
 @RequestMapping("api/v1/message")

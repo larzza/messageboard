@@ -3,6 +3,9 @@ package se.axeto.msgboardpoc.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Exception to throw when an non existing message has been requested.
+ */
 @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such message.")
 public class MessageNotFoundException extends MessageServiceException {
 
